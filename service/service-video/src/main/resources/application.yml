@@ -1,0 +1,15 @@
+server:
+  port: 8003 #微服务端口号
+spring:
+  application:
+    name: service-video #服务名
+  profiles:
+    active: dev #环境
+  servlet:
+    multipart:
+      max-file-size: 1024MB #设置单个文件最大上传大小限制
+      max-request-size: 1024MB #设置总体文件最大上传大小限制
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848 #nacos

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.yzpnb</groupId>
+    <artifactId>gulischool</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>service</module>
+        <module>common</module>
+    </modules>
+    <!--spring boot 父依赖-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.6.RELEASE</version>
+    </parent>
+
+    <!--打包方式为pom-->
+    <packaging>pom</packaging>
+
+    <!--依赖-->
+    <dependencies>
+        <!--spring boot web-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>2.2.6.RELEASE</version>
+        </dependency>
+        <!--spring boot test-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>2.2.6.RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+        <!--lombook-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.12</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <!--管理依赖-->
+    <dependencyManagement>
+        <dependencies>
+            <!--spring cloud-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Hoxton.SR4</version>
+                <type>pom</type>
+                <scope>import</scope>
+                <!--注意这里使用<scope>import</scope>是为了预防jar包依赖引用
+                import只能用于<dependencyManagement>中并且设置<type>pom</type>的依赖中。
+                可以使子模块不使用父模块的引用jar包
+                如果不设置此项，就会报错（你可以注释掉试试），因为子模块在引用某些jar包时，会引用父模块中的jar包
+                从而jar包冲突-->
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

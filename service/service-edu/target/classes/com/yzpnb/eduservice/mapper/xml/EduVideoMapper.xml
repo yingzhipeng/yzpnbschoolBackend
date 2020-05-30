@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yzpnb.eduservice.mapper.EduVideoMapper">
+
+    <select id="getVideoSourceIdList" resultType="java.lang.String">
+        # 获取指定课程id所有的小节对应的视频id
+        select
+            video_source_id as id
+        from
+            edu_video
+        where
+            course_id=#{id}
+    </select>
+</mapper>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yzpnb.eduservice.mapper.EduCourseMapper"><!--mapper映射的接口-->
+    <!--
+        #查询出指定课程id的课程id，课程标题，课程价格，总课时，课程封面，课程讲师，课程简介，课程类别一级和二级
+
+        select
+            课程基本信息.id as 课程id,
+            课程基本信息.title as 课程标题,
+            课程基本信息.price as 课程价格,
+            课程基本信息.lesson_num as 总课时,
+            课程基本信息.cover as 课程封面,
+            讲师.`name` as 讲师名,
+            课程简介.description as 课程简介,
+            一级课程分类.title as 一级分类,
+            二级课程分类.title as 二级分类
+        from edu_course as 课程基本信息
+        left join edu_teacher as 讲师 on 课程基本信息.teacher_id=讲师.id
+        left join edu_course_description as 课程简介 on 课程简介.id=课程基本信息.id
+        left join edu_subject as 一级课程分类 on 课程基本信息.subject_id=一级课程分类.id
+        left join  edu_subject as 二级课程分类 on 课程基本信息.subject_parent_id=二级课程分类.id
+        where 课程基本信息.id=18
+
+    -->
+    <select id="selectCourseAllInfoVo" parameterType="java.lang.String" resultType="com.yzpnb.eduservice.entity.vo.CourseAllInfoVo">
+        select
+            ec.id as id,
+            ec.title as title,
+            ec.price as price,
+            ec.lesson_num as lessonNum,
+            ec.cover as cover,
+            ec.status as status,
+            et.`name` as teacherName,
+            ecd.description as description,
+            es1.title as oneTitle,
+            es2.title as twoTitle
+        from
+            edu_course as ec
+        left join
+            edu_teacher as et
+        on
+            ec.teacher_id=et.id
+        left join
+            edu_course_description as ecd
+        on
+            ecd.id=ec.id
+        left join
+            edu_subject as es1
+        on
+            ec.subject_id=es1.id
+        left join
+            edu_subject as es2
+        on
+            ec.subject_parent_id=es2.id
+        where
+            ec.id=#{id}
+    </select>
+    <!--分页查询课程信息-->
+    <select id="limitSelectCourseAllInfoVo" resultType="com.yzpnb.eduservice.entity.vo.CourseAllInfoVo">
+        select
+            ec.id as id,
+            ec.title as title,
+            ec.price as price,
+            ec.lesson_num as lessonNum,
+            ec.cover as cover,
+            ec.status as status,
+            et.`name` as teacherName,
+            ecd.description as description,
+            es1.title as oneTitle,
+            es2.title as twoTitle
+        from
+            edu_course as ec
+        left join
+            edu_teacher as et
+        on
+            ec.teacher_id=et.id
+        left join
+            edu_course_description as ecd
+        on
+            ecd.id=ec.id
+        left join
+            edu_subject as es1
+        on
+            ec.subject_id=es1.id
+        left join
+            edu_subject as es2
+        on
+            ec.subject_parent_id=es2.id
+        limit #{index},#{size}
+    </select>
+
+    <!--修改指定id的发布状态,如果是未发布Draft就改为Normal已发布，如果是已发布Normal，就改为Draft未发布-->
+    <update id="updateStatus" >
+        update
+            edu_course
+        set
+            status=if(status='Draft',
+                'Normal',
+                'Draft'
+            )
+        where
+            id=#{id}
+    </update>
+</mapper>

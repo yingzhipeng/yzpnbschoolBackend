@@ -1,0 +1,15 @@
+server:
+  port: 8002 #微服务端口号
+spring:
+  application:
+    name: service-oss #服务名
+  profiles:
+    active: dev #环境
+#阿里云OSS配置，可以用官方文档的代码配置，也可以直接配置到文件中，因为这些值是不变的
+aliyun:
+  oss:
+    file:
+      endpoint: oss-cn-beijing.aliyuncs.com #地域节点，我上面提到过，这些信息全部可以从仓库控制台得到
+      keyid: LTAI4GGf4cjh4zZdNeKqUUGw       #证书id
+      keysecret: oQpda38y0cCUql5TOmaYiSJYDz32OP #密钥
+      bucketname: yzpnb-edu-1010          #仓库名，可以在阿里官网控制台创建，或者使用java代码创建
