@@ -1,11 +1,15 @@
 package com.yzpnb.eduservice.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.yzpnb.eduservice.entity.EduCourse;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.yzpnb.eduservice.entity.vo.CourseAllInfoVo;
+import com.yzpnb.eduservice.entity.vo.CourseApiInfoVo;
+import com.yzpnb.eduservice.entity.vo.CourseApiVo;
 import com.yzpnb.eduservice.entity.vo.CourseInfoVo;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -50,4 +54,18 @@ public interface EduCourseService extends IService<EduCourse> {
     void updateStatus(String id);
 
 
+    /**
+     * 条件分页查询
+     * @param pageCourse
+     * @param courseApiVo
+     * @return
+     */
+    Map<String, Object> selectIfLimitCourse(Page<EduCourse> pageCourse, CourseApiVo courseApiVo);
+
+    /**
+     * 根据id获取课程详细信息，包括讲师,并更新浏览量
+     * @param id
+     * @return
+     */
+    CourseApiInfoVo selectCourserApiInfoVoById(String id);
 }

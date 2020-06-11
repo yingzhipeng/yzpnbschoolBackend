@@ -89,6 +89,39 @@
         limit #{index},#{size}
     </select>
 
+    <!--根据id获取课程详细信息，包括讲师-->
+    <select id="selectCourserApiInfoVoById" resultType="com.yzpnb.eduservice.entity.vo.CourseApiInfoVo">
+        SELECT
+            c.id,
+            c.title,
+            c.cover,
+            CONVERT(c.price, DECIMAL(8,2)) AS price,
+            c.lesson_num AS lessonNum,
+            c.cover,
+            c.buy_count AS buyCount,
+            c.view_count AS viewCount,
+            cd.description,
+
+            t.id AS teacherId,
+            t.name AS teacherName,
+            t.intro,
+            t.avatar,
+
+            s1.id AS subjectLevelOneId,
+            s1.title AS subjectLevelOne,
+            s2.id AS subjectLevelTwoId,
+            s2.title AS subjectLevelTwo
+
+          FROM
+            edu_course c
+            LEFT JOIN edu_course_description cd ON c.id = cd.id
+            LEFT JOIN edu_teacher t ON c.teacher_id = t.id
+            LEFT JOIN edu_subject s1 ON c.subject_parent_id = s1.id
+            LEFT JOIN edu_subject s2 ON c.subject_id = s2.id
+          WHERE
+            c.id = #{id}
+
+    </select>
     <!--修改指定id的发布状态,如果是未发布Draft就改为Normal已发布，如果是已发布Normal，就改为Draft未发布-->
     <update id="updateStatus" >
         update

@@ -25,7 +25,7 @@ public class SwaggerConfig {
                 .groupName("webApi")//分组名
                 .apiInfo(webApiInfo())//在线文档的信息，传入ApiInfo对象，就是下面内个方法返回的对象
                 .select()
-                .paths(Predicates.not(PathSelectors.regex("/admin/.*")))//路径中包含admin时不显示信息
+//                .paths(Predicates.not(PathSelectors.regex("/admin/.*")))//路径中包含admin时不显示信息
                 .paths(Predicates.not(PathSelectors.regex("/error/.*")))
                 .build();
     }

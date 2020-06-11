@@ -3,6 +3,7 @@ package com.yzpnb.eduservice.mapper;
 import com.yzpnb.eduservice.entity.EduCourse;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.yzpnb.eduservice.entity.vo.CourseAllInfoVo;
+import com.yzpnb.eduservice.entity.vo.CourseApiInfoVo;
 
 import java.util.List;
 
@@ -34,4 +35,11 @@ public interface EduCourseMapper extends BaseMapper<EduCourse> {
      * @return
      */
     public List<CourseAllInfoVo> limitSelectCourseAllInfoVo(Long index, Long size);
+
+    /**
+     * 根据id获取课程详细信息，包括讲师
+     * @param id
+     * @return
+     */
+    CourseApiInfoVo selectCourserApiInfoVoById(String id);
 }

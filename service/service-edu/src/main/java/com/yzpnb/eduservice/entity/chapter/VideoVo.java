@@ -14,4 +14,10 @@ public class VideoVo {
 
     @ApiModelProperty("小节标题")
     private String title;
+
+    @ApiModelProperty("小节视频id")
+    private String videoSourceId;
+
+    @ApiModelProperty("是否免费")
+    private Boolean isFree;
 }

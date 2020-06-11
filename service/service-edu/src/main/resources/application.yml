@@ -2,7 +2,7 @@ server:
   port: 8001 #微服务端口号为8001
 spring:
   application:
-    name: service-dev #服务名
+    name: service-edu #服务名
   profiles:
     active: dev #环境设置 dev表示构建阶段，test表示测试阶段，prod表示发布阶段
   datasource: #数据源

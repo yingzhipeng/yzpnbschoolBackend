@@ -75,7 +75,8 @@ public class AliyunVideoUtil {
     }
 
     /*获取播放地址函数*/
-    public static void getPlayInfo(DefaultAcsClient client,String id) throws Exception {
+    public String getPlayInfo(String id) throws Exception {
+        client=initVodClient(accessKeyId,accessKeySecret);
         GetPlayInfoRequest request = new GetPlayInfoRequest();
         GetPlayInfoResponse response = new GetPlayInfoResponse();
         request.setVideoId(id);
@@ -93,9 +94,11 @@ public class AliyunVideoUtil {
             System.out.print("ErrorMessage = " + e.getLocalizedMessage());
         }
         System.out.print("RequestId = " + response.getRequestId() + "\n");
+        return response.getRequestId();
     }
     /*获取播放凭证函数*/
-    public static void getVideoPlayAuth(DefaultAcsClient client,String id) throws Exception {
+    public String getVideoPlayAuth(String id) throws Exception {
+        client=initVodClient(accessKeyId,accessKeySecret);
         /***获取播放凭证***/
         GetVideoPlayAuthRequest requestAuth = new GetVideoPlayAuthRequest();
         GetVideoPlayAuthResponse responseAuth = new GetVideoPlayAuthResponse();
@@ -105,6 +108,7 @@ public class AliyunVideoUtil {
         responseAuth=client.getAcsResponse(requestAuth);
         //播放凭证
         System.out.println("PlayAuth = " + responseAuth.getPlayAuth() + "\n");
+        return responseAuth.getPlayAuth();
     }
     /**
      * 删除视频

@@ -5,11 +5,11 @@ spring:
     name: service-acl #服务名
   profiles:
     active: dev #环境设置 dev表示构建阶段，test表示测试阶段，prod表示发布阶段
-  datasource: #数据源
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/gulischool?serverTimeZone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
-    username: root
-    password: 123456
+#  datasource: #数据源
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/gulischool?serverTimeZone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
+#    username: root
+#    password: 123456
   jackson: #我们的时区是东八区，应该加8个小时，时区显示格式也需要改成我们想要的
     date-format: yyyy-MM-DD HH:mm:ss
     time-zone: GMT+8

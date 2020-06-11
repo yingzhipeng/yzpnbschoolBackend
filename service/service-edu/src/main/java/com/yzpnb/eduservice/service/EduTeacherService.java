@@ -1,7 +1,10 @@
 package com.yzpnb.eduservice.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.yzpnb.eduservice.entity.EduTeacher;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.Map;
 
 /**
  * <p>
@@ -13,4 +16,10 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface EduTeacherService extends IService<EduTeacher> {
 
+    /**
+     * 分页查询讲师，返回所有数据
+     * @param pageTeacher
+     * @return
+     */
+    Map<String, Object> limitSelectTeacher(Page<EduTeacher> pageTeacher);
 }

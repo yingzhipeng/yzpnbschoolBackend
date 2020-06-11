@@ -15,6 +15,12 @@
         <module>service-edu</module>
         <module>service-oss</module>
         <module>service-video</module>
+        <module>service-cms</module>
+        <module>service-msm</module>
+        <module>service-ucenter</module>
+        <module>service-order</module>
+        <module>service_statistics</module>
+        <module>service_acl</module>
     </modules>
 
     <dependencies>

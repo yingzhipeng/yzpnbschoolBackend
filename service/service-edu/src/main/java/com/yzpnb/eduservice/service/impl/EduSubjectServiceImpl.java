@@ -33,11 +33,11 @@ public class EduSubjectServiceImpl extends ServiceImpl<EduSubjectMapper, EduSubj
     public List<OneSubject> selectAllOneSubject() {
         //1、查询所有一级分类 parent_id 等于0
         QueryWrapper<EduSubject> queryOneWrapper=new QueryWrapper<>();
-        queryOneWrapper.eq("parent_id","0");
+        queryOneWrapper.eq("parent_id","0");//eq表示=
         List<EduSubject> oneSubjects = baseMapper.selectList(queryOneWrapper);//baseMapper 是我们的Mapper继承的接口封装好的对象
         //2、查询所有二级分类 parent_id 不等于0
         QueryWrapper<EduSubject> queryTwoWrapper=new QueryWrapper<>();
-        queryTwoWrapper.ne("parent_id","0");
+        queryTwoWrapper.ne("parent_id","0");//ne表示不等于
         List<EduSubject> twoSubjects = baseMapper.selectList(queryTwoWrapper);//baseMapper 是我们的Mapper继承的接口封装好的对象
         //3、封装一级分类
         List<OneSubject> list=new ArrayList<>();

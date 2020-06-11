@@ -23,7 +23,7 @@ import lombok.experimental.Accessors;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@Accessors(chain = true)
+@Accessors(chain = true)//配置set方法
 @ApiModel(value="EduChapter对象", description="课程")
 public class EduChapter implements Serializable {
 

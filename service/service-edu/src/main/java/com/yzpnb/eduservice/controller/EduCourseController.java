@@ -68,6 +68,14 @@ public class EduCourseController {
         return Result.ok().data("courseAllInfoVoMap",map);
     }
 
+    @ApiOperation("根据课程id获取课程信息")
+    @GetMapping("selectCourseAllInfoVoApiById")
+    public CourseAllInfoVo selectCourseAllInfoVoApiById(@ApiParam(name = "id",value = "课程id")
+                                                        @RequestParam(value = "id") String id){
+        CourseAllInfoVo courseAllInfoVo = eduCourseService.selectCourseAllInfoVo(id);
+        return courseAllInfoVo;
+    }
+
     /**
      * 修改
      */

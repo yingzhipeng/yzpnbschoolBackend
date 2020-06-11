@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.yzpnb.common_utils.Result;
 import com.yzpnb.eduservice.entity.EduTeacher;
 import com.yzpnb.eduservice.service.EduTeacherService;
+import com.yzpnb.eduservice.service.impl.EduTeacherServiceImpl;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -29,7 +30,7 @@ public class EduTeacherController {
 
     /*注入service*/
     @Autowired
-    EduTeacherService eduTeacherService;
+    private EduTeacherService eduTeacherService;
 
     /**
      * 查询

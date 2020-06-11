@@ -10,6 +10,7 @@
     <modules>
         <module>service</module>
         <module>common</module>
+        <module>infrastructure</module>
     </modules>
     <!--spring boot 父依赖-->
     <parent>
@@ -23,12 +24,7 @@
 
     <!--依赖-->
     <dependencies>
-        <!--spring boot web-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <version>2.2.6.RELEASE</version>
-        </dependency>
+        <!--spring web 因冲突清除-->
         <!--spring boot test-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
