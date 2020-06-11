@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9599112c-3b45-46fa-aed8-ab80fd92e416" name="Default Changelist" comment="" />
+    <list default="true" id="9599112c-3b45-46fa-aed8-ab80fd92e416" name="Default Changelist" comment="二次提交" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,6 +44,9 @@
     </option>
   </component>
   <component name="ProjectId" id="1bZSd6wNMTHBk9ESbhLbOZVJsbF" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />

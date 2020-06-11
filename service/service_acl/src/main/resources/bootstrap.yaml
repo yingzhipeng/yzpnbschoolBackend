@@ -1,0 +1,14 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848 #nacos
+      config:
+        file-extension: yaml #指定配置文件后缀
+        namespace: 2c6d7fe7-6197-41ac-8713-7abc0f1c8051 #指定命名空间dev
+        ext-config[0]:
+          data‐id: datasource.yaml
+          group: DEFAULT_GROUP
+          refresh: true
+  application:
+    name: service-acl #指定服务名，它决定你nacos配置中心文件的Id命名

@@ -1,0 +1,40 @@
+server:
+  port: 8007 #微服务端口号为8007
+spring:
+  application:
+    name: service-statistics #服务名
+  profiles:
+    active: dev #环境设置 dev表示构建阶段，test表示测试阶段，prod表示发布阶段
+  datasource: #数据源
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/gulischool?serverTimeZone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+  jackson: #我们的时区是东八区，应该加8个小时，时区显示格式也需要改成我们想要的
+    date-format: yyyy-MM-DD HH:mm:ss
+    time-zone: GMT+8
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848 #nacos
+feign:
+  client:
+    config:
+      default:
+        connect-timeout: 10000 #设置超时限制，必须超过10000ms才报错
+        read-timeout: 10000 #设置Feign服务熔断机制的最大超时限制
+  hystrix:
+    enabled: true #开启熔断机制
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 6000 #设置hystri超时时间 默认1000ms（10s）
+
+
+mybatis-plus:
+  mapper-locations: classpath:com/yzpnb/statistics_service/mapper/xml/*.xml #配置mapper xml文件的路径
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #mybatis日志

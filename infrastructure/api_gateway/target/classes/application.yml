@@ -1,0 +1,52 @@
+server:
+  port: 8222 #微服务端口号为8222
+spring:
+  application:
+    name: service-gateway #服务名
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848 #nacos
+    gateway:
+      discovery:
+        locator:
+          enabled: true #使用服务发现路由=true，依赖于openfeign
+          lower-case-service-id: true #服务名路由可以小写
+      routes:
+        - id: service-edu #路由id ，随便起，推荐写服务名
+          uri: lb://service-edu #路由url，lb:// 后面 要写在nacos中注册的名字，因为我配置了服务名路由可以小写，所以这里小写也没关系
+          predicates:
+          - Path=/eduservice/** # 路径断言匹配，和nginx中配置转发差不多
+        - id: SERVICE-UCENTER
+          uri: lb://SERVICE-UCENTER #若没有配置服务名小写，则这里必须大写
+          predicates:
+          - Path=/ucenter_service/**
+        - id: service-oss
+          uri: lb://service-oss
+          predicates:
+            - Path=/ossservice/**
+        - id: service-cms
+          uri: lb://service-cms
+          predicates:
+            - Path=/cmsservice/**
+        - id: service-msm
+          uri: lb://service-msm
+          predicates:
+            - Path=/msmservice/**
+        - id: service-order
+          uri: lb://service-order
+          predicates:
+            - Path=/order_service/**
+        - id: service-video
+          uri: lb://service-video
+          predicates:
+            - Path=/videoservice/**
+        - id: service-statistics
+          uri: lb://service-statistics
+          predicates:
+            - Path=/statistics_service/**
+        - id: service-acl
+          uri: lb://service-acl
+          predicates:
+            - Path=/admin/acl/**
+        # 可以配多个

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yzpnb.ucenter_service.mapper.UcenterMemberMapper">
+
+    <!--查询2019年3月12号的注册用户-->
+    <select id="countRegisterByDay" resultType="java.lang.Integer">
+        select
+            count(1)
+        from
+            ucenter_member as uc
+        where
+            Date(uc.gmt_create)=#{day}
+    </select>
+</mapper>
